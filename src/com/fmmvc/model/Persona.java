@@ -16,10 +16,10 @@ public class Persona
 	private String carrera;
 
 	//Initialize connection
-	DatabaseUtil conn = new DatabaseUtil();
+	//DatabaseUtil conn = new DatabaseUtil();
 	
 	
-	public ArrayList getPersonas()
+	/*public ArrayList getPersonas()
 	{
 		PreparedStatement pps = null;
 		String sql = "SELECT * FROM persona";
@@ -84,9 +84,10 @@ public class Persona
 			conn.closeConnection();
 		}
 		return flag;
-	}
+	}*/
 
 	/*Getters and Setters*/
+
 	public String getNombre() {
 		return nombre;
 	}

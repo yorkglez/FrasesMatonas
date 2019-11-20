@@ -10,8 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fmmvc.model.DatabaseUtil;
 import com.fmmvc.model.Persona;
-
+import com.fmmvc.model.db.DatabaseManager;
 @WebServlet("/PersonaServlet")
 public class PersonaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -24,14 +25,18 @@ public class PersonaServlet extends HttpServlet {
 		byte edad = Byte.parseByte(request.getParameter("txtEdad"));
 		boolean isCreated  = false;
 
-		//Object initialization 
+		//Objects initialization 
 		Persona persona = new Persona();
+		DatabaseManager databaseManager = new DatabaseManager();
+		
 
 		persona.setNombre(nombre);
 		persona.setCarrera(carrera);
 		persona.setEdad(edad);
 		
-		isCreated = persona.Create();
+		databaseManager.createPerson(persona);
+		//isCreated = persona.Create();
+		
 		
 		if(isCreated)
 		{
