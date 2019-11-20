@@ -21,7 +21,7 @@ public class PersonaServlet extends HttpServlet {
 		//Variables declaration	
 		String nombre = request.getParameter("txtNombre");
 		String carrera = request.getParameter("txtCarrera");
-		int edad = Integer.parseInt(request.getParameter("txtEdad"));
+		byte edad = Byte.parseByte(request.getParameter("txtEdad"));
 		boolean isCreated  = false;
 
 		//Object initialization 
@@ -37,10 +37,6 @@ public class PersonaServlet extends HttpServlet {
 		{
 			response.sendRedirect("personas.jsp");
 		}
-		
-		
-
-		
 	}
 
 	/**

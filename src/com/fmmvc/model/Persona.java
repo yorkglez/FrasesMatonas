@@ -12,7 +12,7 @@ import java.sql.ResultSet;;
 public class Persona 
 {
 	private String nombre;
-	private int edad;
+	private byte edad;
 	private String carrera;
 
 	//Initialize connection
@@ -67,7 +67,7 @@ public class Persona
 			//prepare statement
 			pps = conn.getConnection().prepareStatement(sql);
 			pps.setString(1, nombre);
-			pps.setInt(2, edad);
+			pps.setByte(2, edad);
 			pps.setString(3, carrera);
 			
 			//execute query
@@ -102,7 +102,7 @@ public class Persona
 	}
 
 
-	public void setEdad(int edad) {
+	public void setEdad(byte edad) {
 		this.edad = edad;
 	}
 

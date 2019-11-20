@@ -39,7 +39,7 @@ public class FraseServlet extends HttpServlet {
 		
 		if(isCreated)
 		{
-			
+			response.sendRedirect("personas.jsp");
 		}	
 	}
 

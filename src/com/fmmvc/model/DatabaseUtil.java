@@ -24,10 +24,10 @@ public class DatabaseUtil
 		//
 		try {
 			//Close connection if is connected
-			if(!conn.isClosed())
+			/*if(!conn.isClosed())
 			{
 				closeConnection();
-			}
+			}*/
 			//Driver
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance(); 
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/frasesmatonas_db?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", user, password);
