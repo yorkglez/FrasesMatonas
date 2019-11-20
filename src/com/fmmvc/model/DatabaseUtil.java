@@ -3,14 +3,20 @@ import java.sql.*;
 public class DatabaseUtil 
 {
 	//Connection declaration
-	private static Connection conn = null;	
+	private static Connection conn= null;	
 	private static final String URL_FORMAT = "jdbc:%s://%s:%s/%s"
 											+"?useUnicode=true"
 											+"&useJDBCCompliantTimezoneShift=true"
 											+"&useLegacyDatetimeCode=false"
 											+"&serverTimezone=UTC";
 	
-	public static Connection getConnection()
+	//Constructor
+	/*public DatabaseUtil()
+	{
+		this.conn = null;
+	}*/
+	
+	public Connection getConnection()
 	{
 		//Variables declaration 
 		String dbms ="mysql";
@@ -20,18 +26,19 @@ public class DatabaseUtil
 		String user = "root";
 		String password = "root";	
 		String url = String.format(URL_FORMAT,dbms,host,port,database);
-				
+
 		//
 		try {
 			//Close connection if is connected
-			/*if(!conn.isClosed())
+			if(conn != null)
 			{
 				closeConnection();
-			}*/
+			}
 			//Driver
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance(); 
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/frasesmatonas_db?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", user, password);
-		} catch (Exception e)
+		} 
+		catch (Exception e)
 		{
 			e.printStackTrace();
 		}
@@ -39,12 +46,13 @@ public class DatabaseUtil
 		return conn;
 	}
 	
-	public static void closeConnection()
+	public void closeConnection()
 	{
 		try 
 		{
 			conn.close();
-		} catch (SQLException e) 
+		} 
+		catch (SQLException e) 
 		{
 			e.printStackTrace();
 		}

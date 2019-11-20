@@ -37,7 +37,6 @@
 	    </ul>
 	  </div>
 	</nav>
-	
 		<h1 class="text-center">Create person</h1>
 		<form class="form-row" action="PersonaServlet" method="post">
 			<div class="form-group col-md-4">

@@ -27,6 +27,5 @@
 			<input type="submit" class="btn btn-primary" value="Save">
 		</form>
 	</div>
-	
 </body>
 </html>
