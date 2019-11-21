@@ -41,6 +41,7 @@ public class DatabaseUtil
 		catch (Exception e)
 		{
 			e.printStackTrace();
+			closeConnection();
 		}
 		
 		return conn;

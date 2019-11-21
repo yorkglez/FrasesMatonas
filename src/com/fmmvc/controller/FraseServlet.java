@@ -35,7 +35,7 @@ public class FraseServlet extends HttpServlet {
 		frase.setCantidad(cantidad);
 		frase.setFechaDesde(fechaDesde);
 		
-		isCreated = frase.Create();
+		//isCreated = frase.Create();
 		
 		if(isCreated)
 		{
