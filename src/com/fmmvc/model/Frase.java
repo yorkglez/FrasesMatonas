@@ -1,13 +1,5 @@
 package com.fmmvc.model;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-
-import com.fmmvc.model.DatabaseUtil;
 
 public class Frase {
 
@@ -15,11 +7,8 @@ public class Frase {
 	private String contenido;
 	private String fechaDesde;
 	private int cantidad; 
-	private PreparedStatement pps = null;
-	
-	//Initialize connection
-	DatabaseUtil conn = new DatabaseUtil();
-	
+	private String fecha;
+		
 	
 	//Getters and Setters
 	public String getContenido() {
@@ -52,6 +41,14 @@ public class Frase {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+	
+	public String getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(String fecha) {
+		this.fecha = fecha;
 	}
 
 }

@@ -1,6 +1,9 @@
 package com.fmmvc.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fmmvc.model.Frase;
+import com.fmmvc.model.db.DatabaseManager;
 
 
 @WebServlet("/FraseServlet")
@@ -15,8 +19,18 @@ public class FraseServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		//Objects initialization 
+		Frase frase = new Frase();
+		DatabaseManager databaseManager = new DatabaseManager();
+		
+		//List declaration
+		List<Frase> fraseList = new ArrayList<>();
+		fraseList = databaseManager.getFrase();
+		
+		//Send list to jsp
+		request.setAttribute("fraseList", fraseList);
+		request.getRequestDispatcher("/frases.jsp").forward(request, response);
+		
 	}
 
 
@@ -28,19 +42,17 @@ public class FraseServlet extends HttpServlet {
 		String fechaDesde = request.getParameter("txtFechadesde");
 		boolean isCreated  = false;
 
-		//Object initialization 
+		//Objects initialization 
 		Frase frase = new Frase();
+		DatabaseManager databaseManager = new DatabaseManager();
 		
 		frase.setContenido(contenido);
 		frase.setCantidad(cantidad);
 		frase.setFechaDesde(fechaDesde);
+					
+		databaseManager.createFrase(frase);
+
 		
-		//isCreated = frase.Create();
-		
-		if(isCreated)
-		{
-			response.sendRedirect("personas.jsp");
-		}	
 	}
 
 }

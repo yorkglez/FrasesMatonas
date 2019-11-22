@@ -10,19 +10,36 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.fmmvc.model.DatabaseUtil;
 import com.fmmvc.model.Persona;
 import com.fmmvc.model.db.DatabaseManager;
 @WebServlet("/PersonaServlet")
 public class PersonaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//Objects initialization 
+		Persona persona = new Persona();
+		DatabaseManager databaseManager = new DatabaseManager();
+		
+		//List declaration
+		List<Persona> personList = new ArrayList<>();
+		personList = databaseManager.getPersona();
+		
+		//Send list to jsp
+		request.setAttribute("personsList", personList);
+		request.getRequestDispatcher("/personas.jsp").forward(request, response);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//Variables declaration	
-		String nombre = request.getParameter("txtNombre");
-		String carrera = request.getParameter("txtCarrera");
-		byte edad = Byte.parseByte(request.getParameter("txtEdad"));
+		String nombre = "";
+		String carrera = "";
+		byte edad = 0;
+
+		
+		nombre = request.getParameter("txtNombre");
+		carrera = request.getParameter("txtCarrera");
+		edad = Byte.parseByte(request.getParameter("txtEdad"));
 		boolean isCreated  = false;
 
 		//Objects initialization 
@@ -42,14 +59,6 @@ public class PersonaServlet extends HttpServlet {
 		{
 			response.sendRedirect("personas.jsp");
 		}
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
 	}
 
 }

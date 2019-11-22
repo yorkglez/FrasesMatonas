@@ -4,21 +4,23 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Create frase</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 </head>
 <body>
 	<div class="container-flid">
-	<h1 class="text-center">Create Frase</h1>
-		<form class="form-row" action="FraseServlet" method="post">
+		<%@ include file="includes/navigation.jsp" %>
+
+		<h1 class="text-center">Create Frase</h1>
+		<form class="" action="FraseServlet" method="post">
 			<div class="form-group col-md-4">
 				<label for="txtContenido">Contenido</label>
 				<input class="form-control" id="txtContenido" type="text" name="txtContenido" required>
 			</div>
 			<div class="form-grou col-md-4">
 				<label for="txtCantidad">Cantidad</label>
-				<input class= "form-control" id="txtCantidad" type="text" name="txtCantidad" required>
+				<input class= "form-control" id="txtCantidad" type="number" name="txtCantidad" required>
 			</div>
 			<div class="form-group col-md-4">
 				<label for="txtFechadesde">Fecha desde</label>

@@ -48,11 +48,7 @@ public class DatabaseManager
 		}
 		finally
 		{
-			try {
-				conn.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+			databaseUtil.closeConnection();
 		}
 		return flag;
 	}
@@ -77,7 +73,6 @@ public class DatabaseManager
 		}
 		catch (SQLException e)
 		{
-	
 			e.printStackTrace();
 		}
 		finally
@@ -105,9 +100,10 @@ public class DatabaseManager
 				//Object declaration
 				Persona persona = new Persona();
 				//Set data to object
+				persona.setId(rs.getInt(1));
 				persona.setNombre(rs.getString(2));
-				persona.setCarrera(rs.getString(3));
-				persona.setEdad(rs.getByte(4));
+				persona.setEdad(rs.getInt(3));
+				persona.setCarrera(rs.getString(4));
 				
 				//Add object to list
 				personasList.add(persona);
@@ -119,11 +115,7 @@ public class DatabaseManager
 		}
 		finally
 		{
-			try {
-				conn.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+			databaseUtil.closeConnection();
 		}
 		
 		return personasList;
@@ -216,6 +208,7 @@ public class DatabaseManager
 				frase.setContenido(rs.getString(2));
 				frase.setCantidad(rs.getInt(3));
 				frase.setFechaDesde(rs.getString(4));
+				frase.setFecha(rs.getString(5));
 				
 				//Add object to list
 				fraseList.add(frase);
@@ -227,8 +220,7 @@ public class DatabaseManager
 		}
 		finally
 		{
-			//conn.close();
-			
+			databaseUtil.closeConnection();
 		}
 		
 		return fraseList;
